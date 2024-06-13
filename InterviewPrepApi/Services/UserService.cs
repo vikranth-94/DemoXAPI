@@ -54,8 +54,6 @@ namespace InterviewPrepApi.Services
 
     private bool VerifyPasswordHash(string password, string storedHash)
     {
-        // Implement password hash verification logic here.
-        // For simplicity, we'll assume the stored hash is just the plain password.
         return password == storedHash;
     }
 }
