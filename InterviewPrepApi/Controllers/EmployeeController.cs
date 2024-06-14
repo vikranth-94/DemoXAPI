@@ -23,10 +23,14 @@ namespace InterviewPrepApi.Controllers
         public async Task<IActionResult> verifyEmployment([FromBody] EmployeeRequest employeeRequest)
         {
             var employeeVerification = await _context.EmployeeRequest.SingleOrDefaultAsync(x => x.EmployeeId == employeeRequest.EmployeeId);
+            var responseData = new
+            {
+                Status = 200
+            };
             if (employeeVerification != null)
             {
                 if (employeeVerification?.EmployeeId == employeeRequest.EmployeeId && employeeVerification?.CompanyName == employeeRequest.CompanyName && employeeVerification?.VerificationCode == employeeRequest.VerificationCode)
-                    return Ok(employeeVerification);
+                    return Ok(responseData);
                 else
                     return BadRequest();
             }
